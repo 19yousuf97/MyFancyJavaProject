@@ -1,52 +1,47 @@
-public interface Shape {
-   void draw();
-}
+public class Shapes {
 
-public class Rectangle implements Shape {
-
-   public void draw() {
-      System.out.println("Inside Rectangle::draw() method.");
-   }
-}
-
-public class Circle implements Shape {
-
-   public void draw() {
-      System.out.println("Inside Circle::draw() method.");
-   }
-}
-
-public class ShapeFactory {
+   private static Shapes instance = new Shapes();
+	private class Rectangle implements Shape {
+   		public void draw() {
+      			System.out.println("Inside Rectangle::draw() method.");
+   				}
+		}
+   
+	private class Circle implements Shape {
+  		public void draw() {
+      			System.out.println("Inside Circle::draw() method.");
+   				}
+		}
+	private class ShapeFactory {
 	
-   public Shape getShape(String shapeType){
-      if(shapeType == null){
-         return null;
-      }		
-      if(shapeType.equalsIgnoreCase("CIRCLE")){
-         return new Circle();
+   		public Shape getShape(String shapeType){
+      			if(shapeType == null){
+         				return null;
+      				}		
+      			if(shapeType.equalsIgnoreCase("CIRCLE")){
+        				return new Circle();
          
-      } else if(shapeType.equalsIgnoreCase("RECTANGLE")){
-         return new Rectangle();
-      
-      return null;
-   }
+      				} 
+			else if(shapeType.equalsIgnoreCase("RECTANGLE")){
+				        return new Rectangle();
+      					return null;
+   				}
+		}
+    
+   public static SingleObject getInstance(){
+	return instance;
+   	}
 }
 
-public class FactoryPatternDemo {
+public class Shapes {
 
    public static void main(String[] args) {
+      Shapes object = Shapes.getInstance();
       ShapeFactory shapeFactory = new ShapeFactory();
-
       Shape shape1 = shapeFactory.getShape("CIRCLE");
-
       shape1.draw();
-
       Shape shape2 = shapeFactory.getShape("RECTANGLE");
-
       shape2.draw();
 
    }
 }
-
-Inside Circle::draw() method.
-Inside Rectangle::draw() method.
