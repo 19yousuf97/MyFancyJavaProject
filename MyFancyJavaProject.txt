@@ -2,13 +2,6 @@ public interface Shape {
    void draw();
 }
 
-public class Rectangle implements Shape {
-
-   public void draw() {
-      System.out.println("Inside Rectangle::draw() method.");
-   }
-}
-
 public class Circle implements Shape {
 
    public void draw() {
@@ -22,13 +15,10 @@ public class ShapeFactory {
       if(shapeType == null){
          return null;
       }		
-      if(shapeType.equalsIgnoreCase("CIRCLE")){
+      else (shapeType.equalsIgnoreCase("CIRCLE")){
          return new Circle();
          
       } 
-      else if(shapeType.equalsIgnoreCase("RECTANGLE")){
-         return new Rectangle();
-      }
       return null;
    }
 }
@@ -39,7 +29,5 @@ public class FactoryPatternDemo {
       ShapeFactory shapeFactory = new ShapeFactory();
       Shape shape1 = shapeFactory.getShape("CIRCLE");
       shape1.draw();
-      Shape shape2 = shapeFactory.getShape("RECTANGLE");
-      shape2.draw();
    }
 }
